@@ -1,0 +1,332 @@
+HTML
+==========
+jQuery contains powerful methods for changing and manipulating HTML elements and attributes.
+jQuery DOM Manipulation
+
+One very important part of jQuery is the possibility to manipulate the DOM.
+
+jQuery comes with a bunch of DOM related methods that make it easy to access and manipulate elements and attributes.
+Note 	DOM = Document Object Model
+
+The DOM defines a standard for accessing HTML and XML documents:
+
+"The W3C Document Object Model (DOM) is a platform and language-neutral interface that allows programs and scripts to dynamically access and update the content, structure, and style of a document."
+Get Content - text(), html(), and val()
+
+Three simple, but useful, jQuery methods for DOM manipulation are:
+
+    text() - Sets or returns the text content of selected elements
+    html() - Sets or returns the content of selected elements (including HTML markup)
+    val() - Sets or returns the value of form fields
+
+The following example demonstrates how to get content with the jQuery text() and html() methods:
+Example
+$("#btn1").click(function(){
+    alert("Text: " + $("#test").text());
+});
+$("#btn2").click(function(){
+    alert("HTML: " + $("#test").html());
+});
+
+
+The following example demonstrates how to get the value of an input field with the jQuery val() method:
+Example
+$("#btn1").click(function(){
+    alert("Value: " + $("#test").val());
+});
+
+Get Attributes - attr()
+
+The jQuery attr() method is used to get attribute values.
+
+The following example demonstrates how to get the value of the href attribute in a link:
+Example
+$("button").click(function(){
+    alert($("#w3s").attr("href"));
+}); 
+
+
+Set Content - text(), html(), and val()
+========================================
+We will use the same three methods from the previous page to set content:
+
+    text() - Sets or returns the text content of selected elements
+    html() - Sets or returns the content of selected elements (including HTML markup)
+    val() - Sets or returns the value of form fields
+
+
+	
+jQuery - Add Elements
+==========================
+With jQuery, it is easy to add new elements/content.
+
+Add New HTML Content
+We will look at four jQuery methods that are used to add new content:
+
+append() - Inserts content at the end of the selected elements
+prepend() - Inserts content at the beginning of the selected elements
+after() - Inserts content after the selected elements
+before() - Inserts content before the selected elements
+jQuery append() Method
+The jQuery append() method inserts content AT THE END of the selected HTML elements.
+
+Example
+$("p").append("Some appended text.");
+
+jQuery prepend() Method
+The jQuery prepend() method inserts content AT THE BEGINNING of the selected HTML elements.
+
+Example
+$("p").prepend("Some prepended text.");
+
+Add Several New Elements With append() and prepend()
+In both examples above, we have only inserted some text/HTML at the beginning/end of the selected HTML elements.
+
+However, both the append() and prepend() methods can take an infinite number of new elements as parameters. The new elements can be generated with text/HTML (like we have done in the examples above), with jQuery, or with JavaScript code and DOM elements.
+
+In the following example, we create several new elements. The elements are created with text/HTML, jQuery, and JavaScript/DOM. Then we append the new elements to the text with the append() method (this would have worked for prepend() too) :
+
+Example
+function appendText() {
+    var txt1 = "<p>Text.</p>";               // Create element with HTML  
+    var txt2 = $("<p></p>").text("Text.");   // Create with jQuery
+    var txt3 = document.createElement("p");  // Create with DOM
+    txt3.innerHTML = "Text.";
+    $("p").append(txt1, txt2, txt3);         // Append the new elements 
+}
+
+jQuery after() and before() Methods
+The jQuery after() method inserts content AFTER the selected HTML elements.
+
+The jQuery before() method inserts content BEFORE the selected HTML elements.
+
+Example
+$("img").after("Some text after");
+
+$("img").before("Some text before");
+
+Add Several New Elements With after() and before()
+Also, both the after() and before() methods can take an infinite number of new elements as parameters. The new elements can be generated with text/HTML (like we have done in the example above), with jQuery, or with JavaScript code and DOM elements.
+
+In the following example, we create several new elements. The elements are created with text/HTML, jQuery, and JavaScript/DOM. Then we insert the new elements to the text with the after() method (this would have worked for before() too) :
+
+Example
+function afterText() {
+    var txt1 = "<b>I </b>";                    // Create element with HTML  
+    var txt2 = $("<i></i>").text("love ");     // Create with jQuery
+    var txt3 = document.createElement("b");    // Create with DOM
+    txt3.innerHTML = "jQuery!";
+    $("img").after(txt1, txt2, txt3);          // Insert new elements after <img>
+}
+========================================================
+With jQuery, it is easy to remove existing HTML elements.
+
+Remove Elements/Content
+To remove elements and content, there are mainly two jQuery methods:
+
+remove() - Removes the selected element (and its child elements)
+empty() - Removes the child elements from the selected element
+
+jQuery remove() Method
+The jQuery remove() method removes the selected element(s) and its child elements.
+
+Example
+$("#div1").remove();
+
+jQuery empty() Method
+The jQuery empty() method removes the child elements of the selected element(s).
+
+Example
+$("#div1").empty();
+
+Filter the Elements to be Removed
+The jQuery remove() method also accepts one parameter, which allows you to filter the elements to be removed.
+
+The parameter can be any of the jQuery selector syntaxes.
+
+The following example removes all <p> elements with class="test":  
+
+Example
+$("p").remove(".test");
+
+This example removes all <p> elements with class="test" and class="demo":  
+
+Example
+$("p").remove(".test, .demo");
+
+
+With jQuery, it is easy to manipulate the CSS of elements.
+===============================================================
+
+jQuery Manipulating CSS
+jQuery has several methods for CSS manipulation. We will look at the following methods:
+
+addClass() - Adds one or more classes to the selected elements
+removeClass() - Removes one or more classes from the selected elements
+toggleClass() - Toggles between adding/removing classes from the selected elements
+css() - Sets or returns the style attribute
+
+Example Stylesheet
+The following stylesheet will be used for all the examples on this page:
+
+.important {
+    font-weight: bold;
+    font-size: xx-large;
+}
+
+.blue {
+    color: blue;
+}
+jQuery addClass() Method
+The following example shows how to add class attributes to different elements. Of course you can select multiple elements, when adding classes:
+
+Example
+$("button").click(function(){
+    $("h1, h2, p").addClass("blue");
+    $("div").addClass("important");
+});
+
+You can also specify multiple classes within the addClass() method:
+Example
+$("button").click(function(){
+    $("#div1").addClass("important blue");
+});
+
+jQuery removeClass() Method
+The following example shows how to remove a specific class attribute from different elements:
+Example
+$("button").click(function(){
+    $("h1, h2, p").removeClass("blue");
+});
+
+jQuery toggleClass() Method
+The following example will show how to use the jQuery toggleClass() method. This method toggles between adding/removing classes from the selected elements:
+
+Example
+$("button").click(function(){
+    $("h1, h2, p").toggleClass("blue");
+});
+
+
+jQuery css() Method
+===========================================================================
+The css() method sets or returns one or more style properties for the selected elements.
+
+Return a CSS Property
+To return the value of a specified CSS property, use the following syntax:
+
+css("propertyname");
+The following example will return the background-color value of the FIRST matched element:
+
+Example
+$("p").css("background-color");
+
+Set a CSS Property
+To set a specified CSS property, use the following syntax:
+
+css("propertyname","value");
+
+The following example will set the background-color value for ALL matched elements:
+
+Example
+$("p").css("background-color", "yellow");
+
+Set Multiple CSS Properties
+To set multiple CSS properties, use the following syntax:
+
+css({"propertyname":"value","propertyname":"value",...});
+The following example will set a background-color and a font-size for ALL matched elements:
+
+Example
+$("p").css({"background-color": "yellow", "font-size": "200%"});
+
+
+============================================================================
+With jQuery, it is easy to work with the dimensions of elements and browser window.
+
+jQuery Dimension Methods
+jQuery has several important methods for working with dimensions:
+
+width()
+height()
+innerWidth()
+innerHeight()
+outerWidth()
+outerHeight()
+jQuery Dimensions
+jQuery Dimensions
+
+jQuery width() and height() Methods
+The width() method sets or returns the width of an element (excludes padding, border and margin).
+
+The height() method sets or returns the height of an element (excludes padding, border and margin).
+
+The following example returns the width and height of a specified <div> element:
+
+Example
+$("button").click(function(){
+    var txt = "";
+    txt += "Width: " + $("#div1").width() + "</br>";
+    txt += "Height: " + $("#div1").height();
+    $("#div1").html(txt);
+});
+
+jQuery innerWidth() and innerHeight() Methods
+The innerWidth() method returns the width of an element (includes padding).
+
+The innerHeight() method returns the height of an element (includes padding).
+
+The following example returns the inner-width/height of a specified <div> element:
+
+Example
+$("button").click(function(){
+    var txt = "";
+    txt += "Inner width: " + $("#div1").innerWidth() + "</br>";
+    txt += "Inner height: " + $("#div1").innerHeight();
+    $("#div1").html(txt);
+});
+
+jQuery outerWidth() and outerHeight() Methods
+The outerWidth() method returns the width of an element (includes padding and border).
+
+The outerHeight() method returns the height of an element (includes padding and border).
+
+The following example returns the outer-width/height of a specified <div> element:
+
+Example
+$("button").click(function(){
+    var txt = "";
+    txt += "Outer width: " + $("#div1").outerWidth() + "</br>";
+    txt += "Outer height: " + $("#div1").outerHeight();
+    $("#div1").html(txt);
+});
+The outerWidth(true) method returns the width of an element (includes padding, border, and margin).
+
+The outerHeight(true) method returns the height of an element (includes padding, border, and margin).
+
+Example
+$("button").click(function(){
+    var txt = "";
+    txt += "Outer width (+margin): " + $("#div1").outerWidth(true) + "</br>";
+    txt += "Outer height (+margin): " + $("#div1").outerHeight(true);
+    $("#div1").html(txt);
+});
+jQuery More width() and height()
+The following example returns the width and height of the document (the HTML document) and window (the browser viewport):
+
+Example
+$("button").click(function(){
+    var txt = "";
+    txt += "Document width/height: " + $(document).width();
+    txt += "x" + $(document).height() + "\n";
+    txt += "Window width/height: " + $(window).width();
+    txt += "x" + $(window).height();
+    alert(txt);
+});
+
+The following example sets the width and height of a specified <div> element:
+
+Example
+$("button").click(function(){
+    $("#div1").width(500).height(500);
+});
